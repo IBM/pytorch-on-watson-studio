@@ -8,10 +8,10 @@ The goal of this code pattern is ...
 
 ![](doc/source/images/architecture.png)
 
-1.
-2.
-3.
-4.
+1. Log into IBM Watson Studio 
+2. Run the Jupyter notebook in Watson Studio
+3. Use PyTorch to download and process the data 
+4. Use Watson Machine Learning to train and deploy the model
 
 ## Included components
 
