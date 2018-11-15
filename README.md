@@ -32,19 +32,100 @@ The goal of this code pattern is ...
 
 Follow these steps to setup the proper environment to run our notebooks locally.
 
-1. [do this](#1-do-this)
-1. [then this](#2-then-this)
-1. [Run the notebook](#3-run-the-notebook)
+1. [Sign up for Watson Studio](#1-sign-up-for-watson-studio)
+1. [Create a new project](#2-create-a-new-project)
+1. [Create the notebook](#3-create-the-notebook)
+1. [Create a Watson Machine Learning Service instance](#4-create-a-watson-machine-learning-service-instance)
+1. [Create HMAC credentials for the Watson Object Storage instance](#5-create-hmac-credentials-for-the-watson-object-storage-instance)
+1. [Run the notebook](#6-run-the-notebook)
 
-### 1. Do This
+### 1. Sign up for Watson Studio
 
-### 2. Then This
+Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/). By creating a project in Watson Studio a free tier Object Storage service will be created in your IBM Cloud account. Take note of your service names as you will need to select them in the following steps.
 
-### 3. Run the notebook
+Note: When creating your Object Storage service, select the Free storage type in order to avoid having to pay an upgrade fee.
+
+### 2. Create a new project
+
+From the Watson Studio home page, select `New Project`, then select the `Create Project` button located in the `Data Science` tile.
+
+![](doc/source/images/studio-create-new-project.png)
+
+* To create a project in Watson Studio, give the project a name and either create a new Cloud Object Storage service or select an existing one from your IBM Cloud account.
+
+![](doc/source/images/studio-create-new-project-2.png)
+
+* Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the Assets and Settings tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
+
+![](doc/source/images/studio-project-assets.png)
+
+### 3. Create the notebook
+
+From the project dashboard view, select the `Add to project` drop-down menu and click on `Notebook`.
+
+![](doc/source/images/studio-create-notebook.png)
+
+Use the `From URL` tab to create our notebook.
+
+* Give your notebook a name and select your desired runtime. In this case, select the default `Python 3` option.
+
+* For URL, enter the path to notebook stored in our source GitHub repository:
+
+```
+https://raw.githubusercontent.com/IBM/pytorch-on-watson-studio/master/notebooks/use-pytorch-to-predict-handwritten-digits.ipynb
+```
+
+![](doc/source/images/studio-create-notebook-2.png)
+
+* Press the `Create Notebook` button.
+
+### 4. Create a Watson Machine Learning Service instance
+
+If you do not already have a running instance of Watson Machine Learning (WML) Service, follow these steps to create one.
+
+* From the IBM Cloud Catalog, under the AI category, select Machine Learning.
+
+![](doc/source/images/watson-ml-tile.png)
+
+* Enter a service name, select the `Lite` plan, the press `Create`.
+
+![](doc/source/images/watson-ml-create.png)
+
+* Once the service instance is created, navigate to `Service credentials`, view credentials and make note of them.
+
+> Note: If you can't see any credentials available, you can create a New credential.
+
+![](doc/source/images/watson-ml-creds.png)
+
+* In the notebook availble with this pattern, there is a cell which requires you to enter your WML credentials. Copy and paste these credentials into that notebook cell.
+
+![](doc/source/images/notebook-add-wml-creds.png)
+
+### 5. Create HMAC credentials for the Watson Object Storage instance
+
+To run the notebook available with this pattern, you must create a `Keyed-Hashing for Message Authentication` (HMAC) set of credentials for your Watson Object Storage instance.
+
+* From the IBM Cloud Dashboard, click on the Watson Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
+
+![](doc/source/images/watson-obj-store-creds.png)
+
+* Click on `New Credential` to initiate creating a new set of credentials. Enter a name, then enter `{"HMAC":true}` in the `Add Inline Configuration Parameters` field. Press `Add` to create the credentials.
+
+![](doc/source/images/watson-obj-store-add-creds.png)
+
+* Once the credentials are created, you should see a set of `cos_hmac_keys` values.
+
+![](doc/source/images/watson-obj-store-new-creds.png)
+
+* In the notebook availble with this pattern, there is a cell which requires you to enter your Watson Object Storage credentials. Copy and paste these credentials into that notebook cell.
+
+![](doc/source/images/notebook-add-wos-creds.png)
+
+### 6. Run the notebook
 
 To view our notebooks, select `Notebooks` in the project `Assets` list.
 
-![](doc/source/images/studio-notebook-list-2.png)
+![](doc/source/images/studio-notebook-list.png)
 
 First, some background on how executing a notebooks: 
 
@@ -72,7 +153,11 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-To run a notebook, simply click on the notebook name from the `Notebooks` list.
+To run a notebook, simply click on the `edit` icon listed in the row associated with tne notebook in the `Notebooks` list.
+
+# Sample output
+
+# Troubleshooting
 
 # Links
 
