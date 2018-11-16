@@ -2,7 +2,14 @@
 
 # PyTorch on Watson Studio
 
-The goal of this code pattern is ...
+## Overview
+Recognizing handwritten digit is a piece of cake for human, but it's a non-trivial task for machines. Nowadays with the advancement of machine learning, people have made machines more and more capable for this task. We can use mobile apps from banks to scan checks in a snap, accountants use software to extract deal size number from thousands of contracts in a minute. If you are interested in knowing how it works, please join our journey and we will show you how to create a simple handwritten digit recognizer in Watson Studio with PyTorch.
+
+## What is Watson Studio?
+[Watson Studio](http://dataplatform.cloud.ibm.com/) is an integrated environment for data scientists, developers and domain experts to collaboratively work with data to build, train and deploy models at scale. If you are new to Watson Studio, the best way to understand it is to [see it in action](https://medium.com/ibm-watson/ibm-watson-studio-in-10-videos-6acf96cc608a)
+
+## Why PyTorch?
+[PyTorch](https://pytorch.org/) is a relatively new deep learning framework. Yet, it has begun to gain adoption especially among researchers and data scientists. The strength of PyTorch is its support of dynamic computational graph while most deep learning frameworks are based on static computational graph. In addition, its strong NumPy like GPU accelerated tensor computation has allowed Python developers to easily learn and build deep learning networks for GPUs and CPUs alike.
 
 ## Flow
 
