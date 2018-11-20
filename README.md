@@ -108,11 +108,19 @@ If you do not already have a running instance of the Watson Machine Learning (WM
 
 ![](doc/source/images/watson-ml-create.png)
 
-* Once the service instance is created, navigate to `Service credentials`, view credentials and make note of them.
+* Once the service instance is created, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
 
-  > Note: If you don't see any credentials available, create a New credential.
-
-  <!-- TODO: Need workaround here -->
+  <!-- PLEASE! Make this workaround go away. Delete it when fixed. -->
+  > If you get this error: *"You do not have the required permission to assign role 'Writer'. Contact the account owner to update your access."* Give yourself writer access by:
+  * Use the IBM Cloud menu `☰` and select `Security`.
+  * Click on `Manage`.
+  * Click on `Identity and Access`.
+  * Use the three dots icon to assign access to yourself.
+  * Click on `Assign access to resources`.
+  * Use the `Services` pulldown to select `All Identity and Access enabled services`.
+  * Use the checkbox to enable `Writer`.
+  * Hit `Assign`.
+  * Go back and try to create your Watson ML credentials again.
 
 ![](doc/source/images/watson-ml-creds.png)
 
