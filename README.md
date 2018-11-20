@@ -1,9 +1,7 @@
-!!! WORK IN PROGRESS !!!
-
-# PyTorch on Watson Studio
+# Use Watson Studio and PyTorch to create a machine learning model to recognize handwritten digits
 
 ## Overview
-Recognizing handwritten numbers is a piece of cake for humans, but it's a non-trivial task for machines. Nowadays. with the advancement of machine learning, people have made machines more and more capable of performing this task. We now have mobile banking apps that can scan checks in seconds, and accounting software that can extract dollar amounts from thousands of contracts in minutes. If you are interested in knowing how this all works, please follow along with this code pattern as we take you through the steps to creating a simple handwritten digit recognizer in Watson Studio and PyTorch.
+Recognizing handwritten numbers is a piece of cake for humans, but it's a non-trivial task for machines. Nowadays, with the advancement of machine learning, people have made machines more and more capable of performing this task. We now have mobile banking apps that can scan checks in seconds and accounting software that can extract dollar amounts from thousands of contracts in minutes. If you are interested in knowing how this all works, please follow along with this code pattern as we take you through the steps to create a simple handwritten digit recognizer in Watson Studio with PyTorch.
 
 ## What is Watson Studio?
 [Watson Studio](http://dataplatform.cloud.ibm.com/) is an integrated environment for data scientists, developers and domain experts to collaboratively work with data to build, train and deploy models at scale. If you are new to Watson Studio, the best way to understand it is to [see it in action](https://medium.com/ibm-watson/ibm-watson-studio-in-10-videos-6acf96cc608a)
@@ -11,18 +9,18 @@ Recognizing handwritten numbers is a piece of cake for humans, but it's a non-tr
 ## What is PyTorch?
 [PyTorch](https://pytorch.org/) is a relatively new deep learning framework. Yet, it has begun to gain adoption especially among researchers and data scientists. The strength of PyTorch is its support of dynamic computational graph while most deep learning frameworks are based on static computational graph. In addition, its strong NumPy like GPU accelerated tensor computation has allowed Python developers to easily learn and build deep learning networks for GPUs and CPUs alike.
 
-In this code pattern, you will use Jupyter notebook in Watson Studio and access to pre-installed and optimized PyTorch environments through Python client library of [Watson Machine Learning](https://console.bluemix.net/catalog/services/machine-learning) service, which has a set of REST APIs in its core that allows users to submit training jobs, monitor status, store and deploy models.
+In this code pattern, you will use Jupyter Notebook in Watson Studio and access preinstalled and optimized PyTorch environments through the Python client library of the [Watson Machine Learning](https://console.bluemix.net/catalog/services/machine-learning) service, which has a set of REST APIs in its core that allows users to submit training jobs, monitor status, and store and deploy models.
 
 When you have completed this code pattern, you will understand how to:
 
-* Create a project in Watson Studio and use Jupyter Notebook in the project.
-* Use Python client of Cloud Object Storage to create buckets and upload data to buckets.
+* Create a project in Watson Studio and use Jupyter Notebooks in the project.
+* Use the Python client of Cloud Object Storage to create buckets and upload data to buckets.
 * Submit PyTorch training jobs to Watson Machine Learning service.
-* Use trained PyTorch model to predict handwritten digits from images.
+* Use the trained PyTorch model to predict handwritten digits from images.
 
 ## Flow
 
-![](doc/source/images/architecture.png)
+![architecture](doc/source/images/architecture.png)
 
 1. Log into IBM Watson Studio 
 2. Run the Jupyter notebook in Watson Studio
@@ -34,25 +32,28 @@ When you have completed this code pattern, you will understand how to:
 * [IBM Watson Studio](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 * [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system.
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Watson Studio](https://developer.ibm.com/components/watson-studio-c/): IBM's integrated hybrid environment that provides flexible data science tools to build and train AI models and prepare and analyze data.
+* [Cloud Object Storage](https://console.bluemix.net/catalog/services/cloud-object-storage): Provides flexible, cost-effective, and scalable cloud storage for unstructured data.
+* [Watson Machine Learning](https://console.bluemix.net/catalog/services/machine-learning): Make smarter decisions, solve tough problems, and improve user outcomes.
 
 ## Featured technologies
 
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
 
+<!--
 # Watch the Video
 
 !! COMING !!
+ -->
 
 # Steps
-
-Follow these steps to setup the proper environment to run our notebooks locally.
 
 1. [Sign up for Watson Studio](#1-sign-up-for-watson-studio)
 1. [Create a new project](#2-create-a-new-project)
 1. [Create the notebook](#3-create-the-notebook)
 1. [Create a Watson Machine Learning Service instance](#4-create-a-watson-machine-learning-service-instance)
-1. [Create HMAC credentials for the Watson Object Storage instance](#5-create-hmac-credentials-for-the-watson-object-storage-instance)
+1. [Create HMAC credentials for the Cloud Object Storage instance](#5-create-hmac-credentials-for-the-cloud-object-storage-instance)
 1. [Run the notebook](#6-run-the-notebook)
 
 ### 1. Sign up for Watson Studio
@@ -83,13 +84,13 @@ From the project dashboard view, select the `Add to project` drop-down menu and 
 
 Use the `From URL` tab to create our notebook.
 
-* Give your notebook a name and select your desired runtime. In this case, select the default `Python 3` option.
+* Give your notebook a name and select your desired runtime. In this case, select the `Default Python 3.5 Free` option.
 
-* For URL, enter the path to notebook stored in our source GitHub repository:
+* For URL, enter the following URL for the notebook stored in our GitHub repository:
 
-```
-https://raw.githubusercontent.com/IBM/pytorch-on-watson-studio/master/notebooks/use-pytorch-to-predict-handwritten-digits.ipynb
-```
+  ```
+  https://raw.githubusercontent.com/IBM/pytorch-on-watson-studio/master/notebooks/use-pytorch-to-predict-handwritten-digits.ipynb
+  ```
 
 ![](doc/source/images/studio-create-notebook-2.png)
 
@@ -97,31 +98,33 @@ https://raw.githubusercontent.com/IBM/pytorch-on-watson-studio/master/notebooks/
 
 ### 4. Create a Watson Machine Learning Service instance
 
-If you do not already have a running instance of Watson Machine Learning (WML) Service, follow these steps to create one.
+If you do not already have a running instance of the Watson Machine Learning (WML) service, follow these steps to create one.
 
-* From the IBM Cloud Catalog, under the AI category, select Machine Learning.
+* From the IBM Cloud Catalog, under the AI category, select [Machine Learning](https://console.bluemix.net/catalog/services/machine-learning).
 
 ![](doc/source/images/watson-ml-tile.png)
 
-* Enter a service name, select the `Lite` plan, the press `Create`.
+* Enter a service name, select the `Lite` plan, then press `Create`.
 
 ![](doc/source/images/watson-ml-create.png)
 
 * Once the service instance is created, navigate to `Service credentials`, view credentials and make note of them.
 
-> Note: If you can't see any credentials available, you can create a New credential.
+  > Note: If you don't see any credentials available, create a New credential.
+
+  <!-- TODO: Need workaround here -->
 
 ![](doc/source/images/watson-ml-creds.png)
 
-* In the notebook availble with this pattern, there is a cell which requires you to enter your WML credentials. Copy and paste these credentials into that notebook cell.
+* In the notebook available with this pattern, there is a cell which requires you to enter your WML credentials. Copy and paste these credentials into that notebook cell.
 
 ![](doc/source/images/notebook-add-wml-creds.png)
 
-### 5. Create HMAC credentials for the Watson Object Storage instance
+### 5. Create HMAC credentials for the Cloud Object Storage instance
 
-To run the notebook available with this pattern, you must create a `Keyed-Hashing for Message Authentication` (HMAC) set of credentials for your Watson Object Storage instance.
+To run the notebook available with this pattern, you must create a `Keyed-Hashing for Message Authentication` (HMAC) set of credentials for your Cloud Object Storage instance.
 
-* From the IBM Cloud Dashboard, click on the Watson Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
+* From the IBM Cloud dashboard, click on the Cloud Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
 
 ![](doc/source/images/watson-obj-store-creds.png)
 
@@ -133,17 +136,17 @@ To run the notebook available with this pattern, you must create a `Keyed-Hashin
 
 ![](doc/source/images/watson-obj-store-new-creds.png)
 
-* In the notebook availble with this pattern, there is a cell which requires you to enter your Watson Object Storage credentials. Copy and paste these credentials into that notebook cell.
+* In the notebook available with this pattern, there is a cell which requires you to enter your Cloud Object Storage credentials. Copy and paste these credentials into that notebook cell.
 
 ![](doc/source/images/notebook-add-wos-creds.png)
 
 ### 6. Run the notebook
 
-To view our notebooks, select `Notebooks` in the project `Assets` list.
+To view your notebooks, select `Notebooks` in the project `Assets` list. To run a notebook, simply click on the `edit` icon listed in the row associated with the notebook in the `Notebooks` list.
 
 ![](doc/source/images/studio-notebook-list.png)
 
-First, some background on how executing a notebooks: 
+Some background on executing notebooks:
 
 > When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -169,11 +172,7 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-To run a notebook, simply click on the `edit` icon listed in the row associated with tne notebook in the `Notebooks` list.
-
 # Sample output
-
-# Troubleshooting
 
 # Links
 
