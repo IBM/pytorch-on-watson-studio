@@ -1,7 +1,7 @@
 # Acknowledgements
 
-* Wine classification assets provided by [Vinodh Mohan](https://www.linkedin.com/in/vinodh-mohan/) and [Vishnu Kannan](https://www.linkedin.com/in/vishnukannan/)
+* The notebook was derived from *"Use TensorFlow to predict hand-written digits"* by Lucasz Cmielowski.
+  * Lucasz Cmielowski, PhD, is a Automation Architect and Data Scientist at IBM with a track record of developing enterprise-level applications that substantially increase the clients' ability to turn data into actionable knowledge.
+  * Copyright © 2017, 2018 IBM. This notebook and its source code are released under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-* IBM Watson Studio Local setup and guidance provided by [Ying Chen](https://www.linkedin.com/in/ying-chen-in-sj/)
-
-* [Wine classification data set](https://www.kaggle.com/brynja/wineuci) provided by [kaggle](https://www.kaggle.com/)
+* IBM Watson Studio setup and guidance provided by [Ying Chen](https://www.linkedin.com/in/ying-chen-in-sj/).

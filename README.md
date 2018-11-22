@@ -22,19 +22,17 @@ When you have completed this code pattern, you will understand how to:
 
 ![architecture](doc/source/images/architecture.png)
 
-1. Log into IBM Watson Studio 
+1. Log into IBM Watson Studio
 2. Run the Jupyter notebook in Watson Studio
-3. Use PyTorch to download and process the data 
+3. Use PyTorch to download and process the data
 4. Use Watson Machine Learning to train and deploy the model
 
 ## Included components
 
-* [IBM Watson Studio](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
-* [Apache Spark](http://spark.apache.org/): An open-source, fast and general-purpose cluster computing system.
-* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
-* [Watson Studio](https://developer.ibm.com/components/watson-studio-c/): IBM's integrated hybrid environment that provides flexible data science tools to build and train AI models and prepare and analyze data.
-* [Cloud Object Storage](https://console.bluemix.net/catalog/services/cloud-object-storage): Provides flexible, cost-effective, and scalable cloud storage for unstructured data.
 * [Watson Machine Learning](https://console.bluemix.net/catalog/services/machine-learning): Make smarter decisions, solve tough problems, and improve user outcomes.
+* [Watson Studio](https://developer.ibm.com/components/watson-studio-c/): IBM's integrated hybrid environment that provides flexible data science tools to build and train AI models and prepare and analyze data.
+* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Cloud Object Storage](https://console.bluemix.net/catalog/services/cloud-object-storage): Provides flexible, cost-effective, and scalable cloud storage for unstructured data.
 
 ## Featured technologies
 
@@ -55,6 +53,7 @@ When you have completed this code pattern, you will understand how to:
 1. [Create a Watson Machine Learning Service instance](#4-create-a-watson-machine-learning-service-instance)
 1. [Create HMAC credentials for the Cloud Object Storage instance](#5-create-hmac-credentials-for-the-cloud-object-storage-instance)
 1. [Run the notebook](#6-run-the-notebook)
+1. [See the results](#7-see-the-results)
 
 ### 1. Sign up for Watson Studio
 
@@ -180,7 +179,17 @@ format is `In [x]:`. Depending on the state of the notebook, the `x` can be:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
+### 7. See the results
+
+Once the model is trained we can use it to recognize handwritten digits.
+
+> Note: With only 1 epoch, the results might be less then perfect.
+
+![digits](doc/source/images/digits.png)
+
 # Sample output
+
+View a copy of the notebook including output [here](data/examples/use-pytorch-to-predict-handwritten-digits.ipynb).
 
 # Links
 
