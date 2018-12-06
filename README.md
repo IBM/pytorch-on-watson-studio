@@ -57,9 +57,9 @@ When you have completed this code pattern, you will understand how to:
 
 ### 1. Sign up for Watson Studio
 
-Sign up for IBM's [Watson Studio](https://dataplatform.ibm.com/). By creating a project in Watson Studio a free tier Object Storage service will be created in your IBM Cloud account. Take note of your service names as you will need to select them in the following steps.
+Sign up for IBM's [Watson Studio](https://dataplatform.cloud.ibm.com/). By creating a project in Watson Studio a free tier Object Storage service will be created in your IBM Cloud account. Take note of your service names as you will need to select them in the following steps.
 
-Note: When creating your Object Storage service, select the Free storage type in order to avoid having to pay an upgrade fee.
+Note: When creating your Object Storage service, select the `Free storage` type in order to avoid having to pay an upgrade fee.
 
 ### 2. Create a new project
 
@@ -71,7 +71,7 @@ From the Watson Studio home page, select `New Project`, then select the `Create 
 
 ![](doc/source/images/studio-create-new-project-2.png)
 
-* Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the Assets and Settings tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
+* Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
 
 ![](doc/source/images/studio-project-assets.png)
 
