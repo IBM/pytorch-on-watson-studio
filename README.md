@@ -38,6 +38,7 @@ When you have completed this code pattern, you will understand how to:
 
 * [Artificial Intelligence](https://medium.com/ibm-data-science-experience): Artificial intelligence can be applied to disparate solution spaces to deliver disruptive technologies.
 * [Python](https://www.python.org/): Python is a programming language that lets you work more quickly and integrate your systems more effectively.
+* [PyTorch](https://pytorch.org/): PyTorch is an open source deep learning platform that provides a seamless path from research prototyping to production deployment.
 
 <!--
 # Watch the Video
