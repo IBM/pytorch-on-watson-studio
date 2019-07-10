@@ -64,13 +64,13 @@ Note: When creating your Object Storage service, select the `Free storage` type 
 
 ### 2. Create a new project
 
-From the Watson Studio home page, select `New Project`, then select the `Create Project` button located in the `Data Science` tile.
+From the Watson Studio home page, select `New Project`, then select the `Create Project` button located in the `Deep Learning` tile.
 
-![](doc/source/images/studio-create-new-project.png)
+![](doc/source/images/studio-create-new-deep-learning-project.png)
 
-* To create a project in Watson Studio, give the project a name and either create a new Cloud Object Storage service or select an existing one from your IBM Cloud account.
+* To create a project in Watson Studio, give the project a name and either create a new Cloud Object Storage and Watson Machine Learning service or select an existing one from your IBM Cloud account.
 
-![](doc/source/images/studio-create-new-project-2.png)
+![](doc/source/images/studio-create-new-deep-learning-project-2.png)
 
 * Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
 
@@ -96,19 +96,14 @@ Use the `From URL` tab to create our notebook.
 
 * Press the `Create Notebook` button.
 
-### 4. Create a Watson Machine Learning Service instance
+### 4. Access the Watson Machine Learning Service instance
 
-If you do not already have a running instance of the Watson Machine Learning (WML) service, follow these steps to create one.
+A running instance of the Watson Machine Learning (WML) Service is created from the Deep Learning Project, you can go to the [IBM Cloud Resources](https://cloud.ibm.com/resources) page and click on the `WatsonMachineLearning` service to access the service details.
 
-* From the IBM Cloud Catalog, under the AI category, select [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning).
+![](doc/source/images/watson-ml-access.png)
 
-![](doc/source/images/watson-ml-tile.png)
 
-* Enter a service name, select the `Lite` plan, then press `Create`.
-
-![](doc/source/images/watson-ml-create.png)
-
-* Once the service instance is created, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
+* Once you land in the service instance page, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
 
   <!-- PLEASE! Make this workaround go away. Delete it when fixed. -->
   > If you get this error: *"You do not have the required permission to assign role 'Writer'. Contact the account owner to update your access."* Give yourself writer access by:
