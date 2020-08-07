@@ -1,12 +1,15 @@
 # Use Watson Studio and PyTorch to create a machine learning model to recognize handwritten digits
 
 ## Overview
+
 Recognizing handwritten numbers is a piece of cake for humans, but it's a non-trivial task for machines. Nowadays, with the advancement of machine learning, people have made machines more and more capable of performing this task. We now have mobile banking apps that can scan checks in seconds and accounting software that can extract dollar amounts from thousands of contracts in minutes. If you are interested in knowing how this all works, please follow along with this code pattern as we take you through the steps to create a simple handwritten digit recognizer in Watson Studio with PyTorch.
 
 ## What is Watson Studio?
+
 [Watson Studio](https://dataplatform.cloud.ibm.com/) is an integrated environment for data scientists, developers and domain experts to collaboratively work with data to build, train and deploy models at scale. If you are new to Watson Studio, the best way to understand it is to [see it in action](https://medium.com/ibm-watson/ibm-watson-studio-in-10-videos-6acf96cc608a)
 
 ## What is PyTorch?
+
 [PyTorch](https://pytorch.org/) is a relatively new deep learning framework. Yet, it has begun to gain adoption especially among researchers and data scientists. The strength of PyTorch is its support of dynamic computational graph while most deep learning frameworks are based on static computational graph. In addition, its strong NumPy like GPU accelerated tensor computation has allowed Python developers to easily learn and build deep learning networks for GPUs and CPUs alike.
 
 In this code pattern, you will use Jupyter Notebook in Watson Studio and access preinstalled and optimized PyTorch environments through the Python client library of the [Watson Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning) service, which has a set of REST APIs in its core that allows users to submit training jobs, monitor status, and store and deploy models.
@@ -46,7 +49,7 @@ When you have completed this code pattern, you will understand how to:
 !! COMING !!
  -->
 
-# Steps
+## Steps
 
 1. [Sign up for Watson Studio](#1-sign-up-for-watson-studio)
 1. [Create a new project](#2-create-a-new-project)
@@ -66,21 +69,21 @@ Note: When creating your Object Storage service, select the `Free storage` type 
 
 From the Watson Studio home page, click on the `Navigation Menu` `☰` icon on the top left, expand the `Project` option, then click on the `View all projects`tab.  Once you land in the [My projects](https://dataplatform.cloud.ibm.com/projects) page, click on the "New project" button  and then select the `Create an empty project` option.
 
-![](doc/source/images/studio-create-new-project.png)
+![studio-create-new-project.png](doc/source/images/studio-create-new-project.png)
 
 * To create a project in Watson Studio, give the project a name and select an existing Cloud Object Storage from your IBM Cloud account.
 
-![](doc/source/images/studio-create-new-project-2.png)
+![studio-create-new-project-2.png](doc/source/images/studio-create-new-project-2.png)
 
 * Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
 
-![](doc/source/images/studio-project-assets.png)
+![studio-project-assets.png](doc/source/images/studio-project-assets.png)
 
 ### 3. Create the notebook
 
 From the project dashboard view, select the `Add to project` tab and click on the `Notebook` button.
 
-![](doc/source/images/studio-create-notebook.png)
+![studio-create-notebook.png](doc/source/images/studio-create-notebook.png)
 
 Use the `From URL` tab to create our notebook.
 
@@ -88,11 +91,11 @@ Use the `From URL` tab to create our notebook.
 
 * For URL, enter the following URL for the notebook stored in our GitHub repository:
 
-  ```
+  ```bash
   https://raw.githubusercontent.com/IBM/pytorch-on-watson-studio/master/notebooks/use-pytorch-to-predict-handwritten-digits.ipynb
   ```
 
-![](doc/source/images/studio-create-notebook-2.png)
+![studio-create-notebook-2.png](doc/source/images/studio-create-notebook-2.png)
 
 * Press the `Create Notebook` button.
 
@@ -100,45 +103,45 @@ Use the `From URL` tab to create our notebook.
 
 If you have existing running instance of Watson Machine Learning (WML) Service, you can go to the [IBM Cloud Resources](https://cloud.ibm.com/resources) page and click on the desired WML service to access the service details.
 
-![](doc/source/images/watson-ml-access.png)
+![watson-ml-access.png](doc/source/images/watson-ml-access.png)
 
 If you do not already have a running instance of the WML service, follow these steps to create one.
 
 * From the IBM Cloud Catalog, under the AI category, select [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning).
 * Select the `Lite` plan, enter a service name located at the bottom of the page, then press `Create`.
 
-![](doc/source/images/watson-ml-create.png)
+![watson-ml-create.png](doc/source/images/watson-ml-create.png)
 
 Once the service instance is created or you have landed in the service instance page of your choice, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
 
-
   <!-- PLEASE! Make this workaround go away. Delete it when fixed. -->
   > If you get this error: *"You do not have the required permission to assign role 'Writer'. Contact the account owner to update your access."* Give yourself writer access by:
-  * Use the IBM Cloud menu `☰` and select `Security`.
-  * Click on `Manage`.
-  * Click on `Identity and Access`.
-  * Use the three dots icon to assign access to yourself.
-  * Click on `Assign access to resources`.
-  * Use the `Services` pulldown to select `All Identity and Access enabled services`.
-  * Use the checkbox to enable `Writer`.
-  * Hit `Assign`.
-  * Go back and try to create your Watson ML credentials again.
 
-![](doc/source/images/watson-ml-creds.png)
+* Use the IBM Cloud menu `☰` and select `Security`.
+* Click on `Manage`.
+* Click on `Identity and Access`.
+* Use the three dots icon to assign access to yourself.
+* Click on `Assign access to resources`.
+* Use the `Services` pulldown to select `All Identity and Access enabled services`.
+* Use the checkbox to enable `Writer`.
+* Hit `Assign`.
+* Go back and try to create your Watson ML credentials again.
+
+![watson-ml-creds.png](doc/source/images/watson-ml-creds.png)
 
 * In the notebook available with this pattern, there is a cell which requires you to enter your WML credentials. Copy and paste these credentials into that notebook cell.
 
-![](doc/source/images/notebook-add-wml-creds.png)
+![notebook-add-wml-creds.png](doc/source/images/notebook-add-wml-creds.png)
 
 Execute the following steps to associate a WML service to your project:
 
-  * Go to the [My projects](https://dataplatform.cloud.ibm.com/projects) page, click on your project.
-  * Click on the `Settings` tab
-  * Click on the `Add service` button located in the `Associated services` section and then select `Watson`
-  ![](doc/source/images/studio-associate-wml-1.png).
-  * Click the `Add` button located in the `Machine Learning` tile.
-  ![](doc/source/images/studio-associate-wml-2.png).
-  * Select a WML service from the drop-down menu to associate it with your project.
+* Go to the [My projects](https://dataplatform.cloud.ibm.com/projects) page, click on your project.
+* Click on the `Settings` tab
+* Click on the `Add service` button located in the `Associated services` section and then select `Watson`
+  ![studio-associate-wml-1.png](doc/source/images/studio-associate-wml-1.png).
+* Click the `Add` button located in the `Machine Learning` tile.
+  ![studio-associate-wml-2.png](doc/source/images/studio-associate-wml-2.png).
+* Select a WML service from the drop-down menu to associate it with your project.
 
 ### 5. Create HMAC credentials for the Cloud Object Storage instance
 
@@ -146,25 +149,25 @@ To run the notebook available with this pattern, you must create a `Keyed-Hashin
 
 * From the [IBM Cloud Resources](https://cloud.ibm.com/resources) page, click on the Cloud Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
 
-![](doc/source/images/watson-obj-store-creds.png)
+![watson-obj-store-creds.png](doc/source/images/watson-obj-store-creds.png)
 
 * Click on `New Credential` to initiate creating a new set of credentials. Enter a name, then expand `Advanced options` to  turn on the `Include HMAC Credential` option. Press `Add` to create the credentials.
 
-![](doc/source/images/watson-obj-store-add-creds.png)
+![watson-obj-store-add-creds.png](doc/source/images/watson-obj-store-add-creds.png)
 
 * Once the credentials are created, you should see a set of `cos_hmac_keys` values.
 
-![](doc/source/images/watson-obj-store-new-creds.png)
+![watson-obj-store-new-creds.png](doc/source/images/watson-obj-store-new-creds.png)
 
 * In the notebook available with this pattern, there is a cell which requires you to enter your Cloud Object Storage credentials. Copy and paste these credentials into that notebook cell.
 
-![](doc/source/images/notebook-add-wos-creds.png)
+![notebook-add-wos-creds.png](doc/source/images/notebook-add-wos-creds.png)
 
 ### 6. Run the notebook
 
 To view your notebooks, select `Notebooks` in the project `Assets` list. To run a notebook, simply click on the `edit` icon listed in the row associated with the notebook in the `Notebooks` list.
 
-![](doc/source/images/studio-notebook-list.png)
+![studio-notebook-list.png](doc/source/images/studio-notebook-list.png)
 
 Some background on executing notebooks:
 
@@ -200,25 +203,23 @@ Once the model is trained we can use it to recognize handwritten digits.
 
 ![digits](doc/source/images/digits.png)
 
-# Sample output
+## Sample output
 
 View a copy of the notebook including output [here](data/examples/use-pytorch-to-predict-handwritten-digits.ipynb).
 
-# Links
+## Links
 
 * [Create Watson Studio Notebooks](https://dataplatform.cloud.ibm.com/docs/content/analyze-data/creating-notebooks.html)
 
-# Learn more
+## Learn more
 
 * **Data Analytics Code Patterns**: Enjoyed this Code Pattern? Check out our other [Data Analytics Code Patterns](https://developer.ibm.com/technologies/data-science/)
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **Watson Studio**: Master the art of data science with IBM's [Watson Studio](https://www.ibm.com/cloud/watson-studio)
 * **Spark on IBM Cloud**: Need a Spark cluster? Create up to 30 Spark executors on IBM Cloud with our [Spark service](https://cloud.ibm.com/catalog/services/apache-spark)
 
-# License
+## License
 
 This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
 [Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
-
-
