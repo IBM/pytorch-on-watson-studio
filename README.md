@@ -64,13 +64,13 @@ Note: When creating your Object Storage service, select the `Free storage` type 
 
 ### 2. Create a new project
 
-From the Watson Studio home page, select `New Project`, then select the `Create Project` button located in the `Deep Learning` tile.
+From the Watson Studio home page, click on the `Navigation Menu` `☰` icon on the top left, expand the `Project` option, then click on the `View all projects`tab.  Once you land in the [My projects](https://dataplatform.cloud.ibm.com/projects) page, click on the "New project" button  and then select the `Create an empty project` option.
 
-![](doc/source/images/studio-create-new-deep-learning-project.png)
+![](doc/source/images/studio-create-new-project.png)
 
-* To create a project in Watson Studio, give the project a name and either create a new Cloud Object Storage and Watson Machine Learning service or select an existing one from your IBM Cloud account.
+* To create a project in Watson Studio, give the project a name and select an existing Cloud Object Storage from your IBM Cloud account.
 
-![](doc/source/images/studio-create-new-deep-learning-project-2.png)
+![](doc/source/images/studio-create-new-project-2.png)
 
 * Upon a successful project creation, you are taken to a dashboard view of your project. Take note of the `Assets` and `Settings` tabs, we'll be using them to associate our project with any external assets (such as notebooks) and any IBM Cloud services.
 
@@ -78,13 +78,13 @@ From the Watson Studio home page, select `New Project`, then select the `Create 
 
 ### 3. Create the notebook
 
-From the project dashboard view, select the `Add to project` drop-down menu and click on `Notebook`.
+From the project dashboard view, select the `Add to project` tab and click on the `Notebook` button.
 
 ![](doc/source/images/studio-create-notebook.png)
 
 Use the `From URL` tab to create our notebook.
 
-* Give your notebook a name and select your desired runtime. In this case, select the `Default Python 3.5 Free` option.
+* Give your notebook a name and select your desired runtime. In this case, select the `Default Python 3.6 Free` option.
 
 * For URL, enter the following URL for the notebook stored in our GitHub repository:
 
@@ -96,14 +96,21 @@ Use the `From URL` tab to create our notebook.
 
 * Press the `Create Notebook` button.
 
-### 4. Access the Watson Machine Learning Service instance
+### 4. Create or access the Watson Machine Learning Service instance
 
-A running instance of the Watson Machine Learning (WML) Service is created from the Deep Learning Project, you can go to the [IBM Cloud Resources](https://cloud.ibm.com/resources) page and click on the `WatsonMachineLearning` service to access the service details.
+If you have existing running instance of Watson Machine Learning (WML) Service, you can go to the [IBM Cloud Resources](https://cloud.ibm.com/resources) page and click on the desired WML service to access the service details.
 
 ![](doc/source/images/watson-ml-access.png)
 
+If you do not already have a running instance of the WML service, follow these steps to create one.
 
-* Once you land in the service instance page, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
+* From the IBM Cloud Catalog, under the AI category, select [Machine Learning](https://cloud.ibm.com/catalog/services/machine-learning).
+* Select the `Lite` plan, enter a service name located at the bottom of the page, then press `Create`.
+
+![](doc/source/images/watson-ml-create.png)
+
+Once the service instance is created or you have landed in the service instance page of your choice, navigate to `Service credentials`, view credentials and make note of them. If you don't see any credentials available, create a `New credential`.
+
 
   <!-- PLEASE! Make this workaround go away. Delete it when fixed. -->
   > If you get this error: *"You do not have the required permission to assign role 'Writer'. Contact the account owner to update your access."* Give yourself writer access by:
@@ -123,15 +130,25 @@ A running instance of the Watson Machine Learning (WML) Service is created from 
 
 ![](doc/source/images/notebook-add-wml-creds.png)
 
+Execute the following steps to associate a WML service to your project:
+
+  * Go to the [My projects](https://dataplatform.cloud.ibm.com/projects) page, click on your project.
+  * Click on the `Settings` tab
+  * Click on the `Add service` button located in the `Associated services` section and then select `Watson`
+  ![](doc/source/images/studio-associate-wml-1.png).
+  * Click the `Add` button located in the `Machine Learning` tile.
+  ![](doc/source/images/studio-associate-wml-2.png).
+  * Select a WML service from the drop-down menu to associate it with your project.
+
 ### 5. Create HMAC credentials for the Cloud Object Storage instance
 
 To run the notebook available with this pattern, you must create a `Keyed-Hashing for Message Authentication` (HMAC) set of credentials for your Cloud Object Storage instance.
 
-* From the IBM Cloud dashboard, click on the Cloud Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
+* From the [IBM Cloud Resources](https://cloud.ibm.com/resources) page, click on the Cloud Object Storage instance that you assigned to your Watson Studio project. Then click the `Service credentials` tab.
 
 ![](doc/source/images/watson-obj-store-creds.png)
 
-* Click on `New Credential` to initiate creating a new set of credentials. Enter a name, then enter `{"HMAC":true}` in the `Add Inline Configuration Parameters` field. Press `Add` to create the credentials.
+* Click on `New Credential` to initiate creating a new set of credentials. Enter a name, then expand `Advanced options` to  turn on the `Include HMAC Credential` option. Press `Add` to create the credentials.
 
 ![](doc/source/images/watson-obj-store-add-creds.png)
 
